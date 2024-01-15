@@ -1,4 +1,12 @@
 # MeshLine
+
+Buildrz note: we forked the "spite" original lib because the lines did not work with orthographic cameras.
+The lib is now maintained by pmndrs.
+At the time of the fork from pmndrs, the orthographic lines worked, but it doesn't seem to be the case with the latest version.
+If we want to switch back to the pmndrs version :
+- We need to edit the vertex shader so that in the case of an orthographic projection, the attenuation is computed correctly
+- Add the definition of MeshLineMaterialParameters extending THREE.ShaderMaterialParameters (this is necessary so that the constructor of MeshLineMaterial accept parameters that are transmitted to ShaderMaterial.setValues, like depthTest)
+
 Mesh replacement for ```THREE.Line```
 
 temporary package:
