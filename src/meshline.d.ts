@@ -14,25 +14,27 @@ export class MeshLine extends THREE.BufferGeometry {
   copyV3(a: number): [number, number, number];
 }
 
+export interface MeshLineMaterialParameters extends THREE.ShaderMaterialParameters {
+  lineWidth?: number,
+  map?: THREE.Texture,
+  useMap?: number,
+  alphaMap?: THREE.Texture,
+  useAlphaMap?: number,
+  color?: string | THREE.Color | number,
+  opacity?: number,
+  resolution: THREE.Vector2, // required
+  sizeAttenuation?: number,
+  dashArray?: number,
+  dashOffset?: number,
+  dashRatio?: number,
+  useDash?: number,
+  visibility?: number,
+  alphaTest?: number,
+  repeat?: THREE.Vector2,
+}
+
 export class MeshLineMaterial extends THREE.ShaderMaterial {
-  constructor(parameters?: {
-    lineWidth?: number,
-    map?: THREE.Texture,
-    useMap?: number,
-    alphaMap?: THREE.Texture,
-    useAlphaMap?: number,
-    color?: string | THREE.Color | number,
-    opacity?: number,
-    resolution: THREE.Vector2, // required
-    sizeAttenuation?: number,
-    dashArray?: number,
-    dashOffset?: number,
-    dashRatio?: number,
-    useDash?: number,
-    visibility?: number,
-    alphaTest?: number,
-    repeat?: THREE.Vector2,
-  });
+  constructor(parameters?: MeshLineMaterialParameters);
 
   lineWidth: number;
   map: THREE.Texture;
